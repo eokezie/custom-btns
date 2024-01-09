@@ -1,40 +1,23 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import GlowButtons from "./GlowButton";
 
-function App() {
-  const [count, setCount] = useState(0);
-
+const App = () => {
   return (
-    <div className="App">
-      <div>
-        <a href="https://reactjs.org" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
+    <>
+      <div className="flex items-center justify-center mb-10">
+        <h3 className="text-white text-4xl font-semibold">Glowing Buttons</h3>
       </div>
-      <h1>React + Vite</h1>
-      <h2>On CodeSandbox!</h2>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR.
-        </p>
-
-        <p>
-          Tip: you can use the inspector button next to address bar to click on
-          components in the preview and open the code in the editor!
-        </p>
+      <div className="flex items-center gap-10">
+        <GlowButtons>Sign In</GlowButtons>
+        <GlowButtons>Sign Up</GlowButtons>
+        <GlowButtons>Create Account</GlowButtons>
+        <GlowButtons>Register User</GlowButtons>
+        <GlowButtons>Sign In</GlowButtons>
+        <GlowButtons>Sign Up</GlowButtons>
+        <GlowButtons>Sign In</GlowButtons>
+        <GlowButtons>Sign Up</GlowButtons>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
+    </>
   );
-}
+};
 
 export default App;

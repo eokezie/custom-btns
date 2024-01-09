@@ -1,70 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  /* --x: 0;
+  --y: 0;
+  --xp: 0;
+  --yp: 0;
+	--hue: calc(0 + (var(--xp) * 500)); */
+  --bg: hsl(0 0% 10%);
+  /* --size: 100px;
+	--glow: radial-gradient(
+			50% 50% at center,
+			hsl(var(--hue) 80% 85%),
+			hsl(var(--hue) 80% 70%),
+			transparent
+		)
+		calc((var(--x) * 1px) - (var(--size) * 0.5))
+		calc((var(--y) * 1px) - (var(--size) * 0.5)) / var(--size) var(--size) no-repeat fixed; */
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+.controls {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
 }
 
 body {
-  margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
   min-height: 100vh;
+  font-family: "Poppins", "Roboto", sans-serif;
+  background: var(--bg);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.glow_btn {
+  border-radius: 0.5rem;
+  text-transform: capitalize;
+  font-weight: bold;
+  letter-spacing: 0.1ch;
+  background: var(--bg);
+  border: 2px solid transparent;
+  box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  background:
+    linear-gradient(var(--bg), var(--bg)) padding-box,
+    var(--glow),
+    linear-gradient(black, black) border-box;
+  transition: background-size 0.24s;
+  touch-action: none;
+  position: relative;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.glow_btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: 0 1px hsl(0 0% 100% / 0.15) inset;
+  background: var(--bg);
+  z-index: 2;
+  border-radius: 0.5rem;
 }
+
+.glow_btn span {
+  background: var(--glow), black;
+  background-clip: text;
+  color: transparent;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  position: relative;
+  inset: 0;
+}
+
+.glow_btn::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  filter: blur(20px);
+  border: 4px solid transparent;
+  background: var(--glow);
+  border-radius: 0.5rem;
+}
+
+/* :root:has(button:active) {
+  --size: 300px;
+} */
